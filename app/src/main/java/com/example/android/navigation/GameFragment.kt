@@ -99,10 +99,14 @@ class GameFragment : Fragment() {
                         setQuestion()
                         binding.invalidateAll()
                     } else {
-                        findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+                        findNavController()
+                            .navigate(GameFragmentDirections
+                                .actionGameFragmentToGameWonFragment(numQuestions, questionIndex))
                     }
                 } else {
-                    findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+                    findNavController()
+                        .navigate(GameFragmentDirections
+                            .actionGameFragmentToGameOverFragment())
                 }
             }
         }

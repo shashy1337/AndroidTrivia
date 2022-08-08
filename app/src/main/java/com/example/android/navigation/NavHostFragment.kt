@@ -12,9 +12,6 @@ import com.example.android.navigation.databinding.FragmentTitleBinding
 
 class NavHostFragment : Fragment() {
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,10 +19,20 @@ class NavHostFragment : Fragment() {
         val binding = DataBindingUtil
             .inflate<FragmentTitleBinding>(inflater, R.layout.fragment_title, container, false)
         binding.playButton.setOnClickListener {
-            findNavController().navigate(R.id.action_navFragmentTitle_to_gameFragment)
+            findNavController()
+                .navigate(NavHostFragmentDirections
+                    .actionNavFragmentTitleToGameFragment())
+        }
+        binding.aboutButton.setOnClickListener {
+            findNavController()
+                .navigate(NavHostFragmentDirections
+                    .actionNavFragmentTitleToAboutFragment())
+        }
+        binding.rulesButton.setOnClickListener {
+            findNavController()
+                .navigate(NavHostFragmentDirections.actionNavFragmentTitleToRulesFragment())
         }
         setHasOptionsMenu(true)
-
         return binding.root
     }
 
